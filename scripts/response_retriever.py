@@ -7,19 +7,21 @@ import sys
 from pathlib import Path
 import json
 import pickle
-import numpy as np
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 try:
-    from sklearn.feature_extraction.text import TfidfVectorizer
-    from sklearn.metrics.pairwise import cosine_similarity
+    import numpy as np
+    NUMPY_AVAILABLE = True
 except ImportError:
-    print("Installing scikit-learn...")
-    import subprocess
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", "scikit-learn"])
+    NUMPY_AVAILABLE = False
+
+try:
     from sklearn.feature_extraction.text import TfidfVectorizer
     from sklearn.metrics.pairwise import cosine_similarity
+    SKLEARN_AVAILABLE = True
+except ImportError:
+    SKLEARN_AVAILABLE = False
 
 
 class ResponseRetriever:
@@ -38,6 +40,9 @@ class ResponseRetriever:
     def _load(self):
         """Load retriever index."""
         try:
+            if not SKLEARN_AVAILABLE or not NUMPY_AVAILABLE:
+                return False
+
             vectorizer_path = self.index_path / "vectorizer.pkl"
             if not vectorizer_path.exists():
                 return False
@@ -107,6 +112,10 @@ def build_response_index():
     print("=" * 70)
     print("BUILDING RESPONSE RETRIEVAL INDEX")
     print("=" * 70)
+
+    if not SKLEARN_AVAILABLE or not NUMPY_AVAILABLE:
+        print("✗ scikit-learn or numpy not available, cannot build index")
+        return None
 
     # Load conversations
     print("\n1. Loading conversations...")

@@ -1,0 +1,278 @@
+{
+  "test_queries": [
+    {
+      "id": "order_01",
+      "category": "ORDER_STATUS",
+      "query": "Where is my order?",
+      "description": "Simple order tracking request"
+    },
+    {
+      "id": "order_02",
+      "category": "ORDER_STATUS",
+      "query": "Can you tell me the status of order #45892?",
+      "description": "Order status with order number"
+    },
+    {
+      "id": "order_03",
+      "category": "ORDER_STATUS",
+      "query": "I need to track my package delivery",
+      "description": "Package tracking request"
+    },
+    {
+      "id": "delivery_01",
+      "category": "DELIVERY_ISSUE",
+      "query": "My package hasn't arrived yet",
+      "description": "Late delivery complaint"
+    },
+    {
+      "id": "delivery_02",
+      "category": "DELIVERY_ISSUE",
+      "query": "It's been 2 weeks and my order still hasn't shipped",
+      "description": "Package not shipped"
+    },
+    {
+      "id": "delivery_03",
+      "category": "DELIVERY_ISSUE",
+      "query": "The delivery date passed and I still don't have my item",
+      "description": "Missed delivery deadline"
+    },
+    {
+      "id": "damaged_01",
+      "category": "DAMAGED_ITEM",
+      "query": "My item arrived broken",
+      "description": "Damaged product upon delivery"
+    },
+    {
+      "id": "damaged_02",
+      "category": "DAMAGED_ITEM",
+      "query": "The package was damaged in shipping",
+      "description": "Shipping damage"
+    },
+    {
+      "id": "damaged_03",
+      "category": "DAMAGED_ITEM",
+      "query": "I received a defective product",
+      "description": "Defective item received"
+    },
+    {
+      "id": "refund_01",
+      "category": "REFUND_RETURN",
+      "query": "How do I return this item?",
+      "description": "Return process inquiry"
+    },
+    {
+      "id": "refund_02",
+      "category": "REFUND_RETURN",
+      "query": "I want a refund for my order",
+      "description": "Refund request"
+    },
+    {
+      "id": "refund_03",
+      "category": "REFUND_RETURN",
+      "query": "Can I get my money back?",
+      "description": "Refund inquiry"
+    },
+    {
+      "id": "billing_01",
+      "category": "BILLING_PAYMENT",
+      "query": "I was charged twice for my order",
+      "description": "Duplicate charge issue"
+    },
+    {
+      "id": "billing_02",
+      "category": "BILLING_PAYMENT",
+      "query": "There's an error on my invoice",
+      "description": "Invoice error"
+    },
+    {
+      "id": "billing_03",
+      "category": "BILLING_PAYMENT",
+      "query": "Why did you charge me that amount?",
+      "description": "Billing inquiry"
+    },
+    {
+      "id": "account_01",
+      "category": "ACCOUNT_LOGIN",
+      "query": "I can't log into my account",
+      "description": "Login failure"
+    },
+    {
+      "id": "account_02",
+      "category": "ACCOUNT_LOGIN",
+      "query": "I forgot my password",
+      "description": "Password reset needed"
+    },
+    {
+      "id": "account_03",
+      "category": "ACCOUNT_LOGIN",
+      "query": "My account was hacked",
+      "description": "Security concern - ESCALATION EXPECTED"
+    },
+    {
+      "id": "prime_01",
+      "category": "PRIME_SUBSCRIPTION",
+      "query": "How do I cancel my Prime membership?",
+      "description": "Prime cancellation request"
+    },
+    {
+      "id": "prime_02",
+      "category": "PRIME_SUBSCRIPTION",
+      "query": "What are the benefits of Prime?",
+      "description": "Prime benefits inquiry"
+    },
+    {
+      "id": "prime_03",
+      "category": "PRIME_SUBSCRIPTION",
+      "query": "I want to upgrade my subscription",
+      "description": "Subscription upgrade"
+    },
+    {
+      "id": "product_01",
+      "category": "PRODUCT_INFORMATION",
+      "query": "Tell me about this product",
+      "description": "Product information request"
+    },
+    {
+      "id": "product_02",
+      "category": "PRODUCT_INFORMATION",
+      "query": "What size should I order?",
+      "description": "Size inquiry"
+    },
+    {
+      "id": "product_03",
+      "category": "PRODUCT_INFORMATION",
+      "query": "Is this item compatible with X?",
+      "description": "Compatibility question"
+    },
+    {
+      "id": "shipping_01",
+      "category": "SHIPPING_ADDRESS",
+      "query": "Can I change my shipping address?",
+      "description": "Address change request"
+    },
+    {
+      "id": "shipping_02",
+      "category": "SHIPPING_ADDRESS",
+      "query": "I entered the wrong address",
+      "description": "Wrong address correction"
+    },
+    {
+      "id": "shipping_03",
+      "category": "SHIPPING_ADDRESS",
+      "query": "Update my delivery location",
+      "description": "Delivery location change"
+    },
+    {
+      "id": "technical_01",
+      "category": "TECHNICAL_ISSUE",
+      "query": "The website won't load",
+      "description": "Website technical issue"
+    },
+    {
+      "id": "technical_02",
+      "category": "TECHNICAL_ISSUE",
+      "query": "I'm getting an error when I try to checkout",
+      "description": "Checkout error"
+    },
+    {
+      "id": "technical_03",
+      "category": "TECHNICAL_ISSUE",
+      "query": "The app keeps crashing",
+      "description": "App crash issue"
+    },
+    {
+      "id": "complaint_01",
+      "category": "CUSTOMER_SERVICE_COMPLAINT",
+      "query": "Your customer service is terrible!",
+      "description": "Service complaint - ESCALATION EXPECTED"
+    },
+    {
+      "id": "complaint_02",
+      "category": "CUSTOMER_SERVICE_COMPLAINT",
+      "query": "I've been waiting days for a response",
+      "description": "Long wait complaint - ESCALATION EXPECTED"
+    },
+    {
+      "id": "complaint_03",
+      "category": "CUSTOMER_SERVICE_COMPLAINT",
+      "query": "This is unacceptable. I'm canceling everything!",
+      "description": "Severe complaint - ESCALATION EXPECTED"
+    },
+    {
+      "id": "general_01",
+      "category": "GENERAL_INQUIRY",
+      "query": "Can you help me with something?",
+      "description": "General help request"
+    },
+    {
+      "id": "general_02",
+      "category": "GENERAL_INQUIRY",
+      "query": "What is your return policy?",
+      "description": "Policy inquiry"
+    },
+    {
+      "id": "general_03",
+      "category": "GENERAL_INQUIRY",
+      "query": "I have a question about my account",
+      "description": "Account question"
+    },
+    {
+      "id": "escalation_01",
+      "query": "I need to speak to a manager NOW!",
+      "description": "Explicit escalation request",
+      "should_escalate": true
+    },
+    {
+      "id": "escalation_02",
+      "query": "My account was compromised!",
+      "description": "Security escalation",
+      "should_escalate": true
+    },
+    {
+      "id": "escalation_03",
+      "query": "This is ridiculous! I've been trying to get help for days!",
+      "description": "Frustration escalation",
+      "should_escalate": true
+    },
+    {
+      "id": "escalation_04",
+      "query": "I want to speak to your supervisor immediately!",
+      "description": "Management escalation request",
+      "should_escalate": true
+    },
+    {
+      "id": "escalation_05",
+      "query": "This is the third time I'm contacting you!",
+      "description": "Repeated contact escalation",
+      "should_escalate": true
+    }
+  ],
+  "test_scenarios": [
+    {
+      "name": "Happy Path - Simple Query",
+      "queries": ["order_01", "product_01"],
+      "expected": "Should detect intent, no escalation, use template response"
+    },
+    {
+      "name": "Escalation Flow",
+      "queries": ["escalation_01", "escalation_02"],
+      "expected": "Should detect escalation and recommend escalation action"
+    },
+    {
+      "name": "All Intent Categories",
+      "queries": [
+        "order_01", "delivery_01", "damaged_01", "refund_01",
+        "billing_01", "account_01", "prime_01", "product_01",
+        "shipping_01", "technical_01", "complaint_01", "general_01"
+      ],
+      "expected": "Should handle all 12 intent categories correctly"
+    },
+    {
+      "name": "Mixed Sentiment",
+      "queries": [
+        "order_01", "complaint_03", "technical_02", "escalation_03"
+      ],
+      "expected": "Should adapt responses based on sentiment and escalation signals"
+    }
+  ]
+}

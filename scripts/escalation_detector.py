@@ -17,10 +17,10 @@ try:
     from sklearn.linear_model import LogisticRegression
     from sklearn.model_selection import train_test_split
     from sklearn.metrics import precision_recall_fscore_support, confusion_matrix
+    SKLEARN_AVAILABLE = True
 except ImportError:
-    print("Installing scikit-learn...")
-    import subprocess
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "-q", "scikit-learn"])
+    SKLEARN_AVAILABLE = False
+    # Graceful degradation - sklearn not required for basic escalation detection
 
 
 class EscalationDetector:
