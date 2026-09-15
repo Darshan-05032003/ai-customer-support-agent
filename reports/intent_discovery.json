@@ -1,0 +1,342 @@
+{
+  "methodology": "Semantic pattern-based intent discovery",
+  "total_messages_analyzed": 162562,
+  "intent_categories": {
+    "ACCOUNT_LOGIN": {
+      "count": 6734,
+      "percentage": 4.1,
+      "definition": "Customer having account access, login, or password issues",
+      "keywords": [
+        "account",
+        "password",
+        "login",
+        "log in",
+        "access",
+        "sign in",
+        "password reset",
+        "email"
+      ],
+      "phrases": [
+        "can't login",
+        "reset password",
+        "account access",
+        "forgot password",
+        "login issue"
+      ],
+      "examples": [
+        "bought an echo show and it won\u2019t recognize a single account in our household. wtf, guys?",
+        "you have to log in. i don't remember the email address i used. can you look up the account by my bank information?",
+        "it\u2019s not allowing me to update it to register my new amazon account. i read i\u2019d have to do so manually. thx 4 response.",
+        "yeah i sent you a dm too. had an email saying when it had been dispatched but nothing since.",
+        "have completed form and emailed you."
+      ]
+    },
+    "BILLING_PAYMENT": {
+      "count": 4142,
+      "percentage": 2.5,
+      "definition": "Customer reporting billing errors, charges, or payment issues",
+      "keywords": [
+        "charge",
+        "charged",
+        "payment",
+        "billing",
+        "bill",
+        "invoice",
+        "paid",
+        "price"
+      ],
+      "phrases": [
+        "double charged",
+        "wrong amount",
+        "price",
+        "charge",
+        "billing issue"
+      ],
+      "examples": [
+        "i called customer service and was told my membership wouldn't be renewed. i was just charged today. how do i get a refun",
+        "thats the thing i told customer service. i created a new email address for the prime trial and forgot it. what can i do ",
+        "they sent me the email i sent you guys that said i wasn't gonna be charged. he must have been able to look up my account",
+        "being charged for amazon prime &amp; when i go to cancel it, it\u2019s saying i\u2019m not a member\ud83d\ude20\ud83d\ude20\ud83d\ude20",
+        "so essentially still two separate accounts, just sharing payment info? i don't want my family to see my christmas shoppi"
+      ]
+    },
+    "CUSTOMER_SERVICE_COMPLAINT": {
+      "count": 4918,
+      "percentage": 3.0,
+      "definition": "Customer expressing dissatisfaction with service or making complaint",
+      "keywords": [
+        "complaint",
+        "complaint",
+        "frustrated",
+        "unhappy",
+        "disappointing",
+        "poor service"
+      ],
+      "phrases": [
+        "customer service",
+        "poor service",
+        "complaint",
+        "very unhappy"
+      ],
+      "examples": [
+        "way to drop the ball on customer service so pissed right now!",
+        "i frankly don't have the patience for another chat with your \"customer service\" people today.",
+        "saying i preordered to early, terrible customer service. won\u2019t renew prime if this isn\u2019t fixed.",
+        "i\u2019m not talking to customer service again. thats part of the problem. i want someone in america @ corporate who can make",
+        "so i see that amazon twitter is staffed by the same people as customer service. each answer here spoken by s different p"
+      ]
+    },
+    "DAMAGED_ITEM": {
+      "count": 1121,
+      "percentage": 0.7,
+      "definition": "Customer reporting damaged, defective, or broken product",
+      "keywords": [
+        "damaged",
+        "broken",
+        "defective",
+        "broken",
+        "bent",
+        "cracked",
+        "torn",
+        "ripped"
+      ],
+      "phrases": [
+        "item damaged",
+        "arrived damaged",
+        "broken item",
+        "defective product"
+      ],
+      "examples": [
+        "is it possible to prevent amzl from delivering my packages moving forward? stuff is either lost/stolen/broken every time",
+        ", it\u2019d be nice if the book i waited 4 months for wasn\u2019t damaged inside of an undented box. #twinpeaks #twin\u2026",
+        "#amazon who packages these games. ordered to games and both came rattling inside their cases. one is broken. games may h",
+        "hi guys, i've received the phone. but the packaging was not proper and the invoice was torned. like in below image. at f",
+        "i bht food feeder and got defective, nw to return, i hv to courier it back myself, i don't hv time, that's y i am buying"
+      ]
+    },
+    "DELIVERY_ISSUE": {
+      "count": 14403,
+      "percentage": 8.9,
+      "definition": "Customer reporting late, missing, or problematic delivery",
+      "keywords": [
+        "delivery",
+        "delivered",
+        "late",
+        "delayed",
+        "not received",
+        "didn't arrive",
+        "missing"
+      ],
+      "phrases": [
+        "not delivered",
+        "late delivery",
+        "delayed delivery",
+        "where delivery",
+        "delivery late",
+        "delivery date"
+      ],
+      "examples": [
+        "how about you guys figure out my xbox one x project scorpio edition first. no expected delivery or shipping date and it\u2019",
+        "that page is useless - doesn\u2019t allow me to state it hasn\u2019t been delivered; only tells me it has! how can you sort this o",
+        "i'm never using amazon again! after waiting in all day as item is \"out for delivery\", they've only gone and sent it to t",
+        "it's more than one month for something that should have taken 2 days. 'apologies' won't work. please do some real work &",
+        "i made a same day ship mid monday and it said it would deliver that day. it didn\u2019t. today it still says out for delivery"
+      ]
+    },
+    "GENERAL_INQUIRY": {
+      "count": 85518,
+      "percentage": 52.6,
+      "definition": "General customer inquiry or request for help",
+      "keywords": [
+        "help",
+        "question",
+        "how",
+        "what",
+        "why",
+        "when",
+        "where",
+        "need"
+      ],
+      "phrases": [
+        "need help",
+        "can help",
+        "quick question",
+        "help please"
+      ],
+      "examples": [
+        "amazon\u306efiretvstick\u304c\u898b\u308c\u306a\u3044\ud83d\ude22",
+        "\u3042\u308a\u304c\u3068\u3046\u3054\u3056\u3044\u307e\u3059\u3002 \u4eca\u3001\u96fb\u8a71\u3067\u4e3b\u4eba\u304c\u5bfe\u5fdc\u3057\u3066\u3044\u305f\u3060\u3044\u3066\u307e\u3059\u3002",
+        "\u96fb\u8a71\u3067\u5bfe\u5fdc\u3057\u3066\u3082\u3089\u3044\u307e\u3057\u305f\u304c\u6539\u826f\u3055\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002 \u4fdd\u8a3c\u671f\u9593\u3082\u904e\u304e\u3066\u308b\u306e\u3067\u8cb7\u3044\u76f4\u3057\u306b\u306a\u308b\u3093\u3067\u3057\u3087\u3046\u306d\u3002",
+        "\u3053\u3061\u3089\u3053\u305d\u3042\u308a\u304c\u3068\u3046\u3054\u3056\u3044\u307e\u3057\u305f\u3002",
+        "okay, danke f\u00fcr die info"
+      ]
+    },
+    "ORDER_STATUS": {
+      "count": 24102,
+      "percentage": 14.8,
+      "definition": "Customer inquiring about status, tracking, or location of an order",
+      "keywords": [
+        "order",
+        "where",
+        "status",
+        "tracking",
+        "track",
+        "number",
+        "locate",
+        "find",
+        "check"
+      ],
+      "phrases": [
+        "order status",
+        "where is my",
+        "tracking number",
+        "order number",
+        "check order",
+        "find order"
+      ],
+      "examples": [
+        "3 different people have given 3 different answers and i still don't have my order. says delivered saturday, was not, i w",
+        "playerunknown's battlegrounds is now available for preorder on xbox one consoles -",
+        "yeah this is crazy we\u2019re less than a week away and still no shipping information on something that we pre-ordered back i",
+        ". item has not been delivered but tracking says it was handed to me over an hour ago... 2nd time this has happened. sort",
+        "already started the return. ups gets it from my doorstep tomorrow. order 111-5014070-4118645"
+      ]
+    },
+    "PRIME_SUBSCRIPTION": {
+      "count": 7200,
+      "percentage": 4.4,
+      "definition": "Customer inquiring about or managing Prime membership or subscription",
+      "keywords": [
+        "prime",
+        "membership",
+        "subscription",
+        "cancel",
+        "unsubscribe",
+        "renew",
+        "benefit"
+      ],
+      "phrases": [
+        "prime member",
+        "cancel prime",
+        "prime subscription",
+        "cancel membership"
+      ],
+      "examples": [
+        "also, beim addams family-film in prime sind bild und ton nicht wirklich synchron. wie kommt's?",
+        "i have tried. it\u2019s not allowing me to access my account to cancel my membership, i haven\u2019t even used prime in almost 3 m",
+        "two fake items in one day. time to cancel my amazon prime membership.",
+        "\u300c#72\u6642\u9593\u30db\u30f3\u30cd\u30c6\u30ec\u30d3\u300d\u3092fire tv stick\u3067\u89b3\u3088\u3046\u300211/2 21\u6642\u304b\u3089abematv\u3067\u751f\u653e\u9001\u3002fire tv stick\u306a\u3089\u3001\u5927\u753b\u9762\u3067\u697d\u3057\u3081\u307e\u3059\u3002prime now\u306b\u3066\u3001500\u5186off\u30ad\u30e3\u30f3\u30da\u30fc\u30f3\u5b9f\u65bd\u4e2d(\u30a8\u30ea\u30a2\u9650\u5b9a)\u3002",
+        "yeh sure.i was in uk.came back to india,used my indian bank account to purchase.amazonuk took money for prime.i cancelle"
+      ]
+    },
+    "PRODUCT_INFORMATION": {
+      "count": 1757,
+      "percentage": 1.1,
+      "definition": "Customer requesting product information, specifications, or usage details",
+      "keywords": [
+        "information",
+        "details",
+        "description",
+        "specs",
+        "specifications",
+        "how use",
+        "manual"
+      ],
+      "phrases": [
+        "product info",
+        "product details",
+        "how to use",
+        "product description"
+      ],
+      "examples": [
+        "i want to participate in this contest, please send the details as soon as possible. amazon is love and trust for me",
+        "please send 5 t sale details. i am much interested.",
+        "i'm uk based. are the contact details the same?",
+        "i have had the hassle to provide my concern on the given link twice and it\u2019s a pain. use the details i already mentioned",
+        "i have filled the details"
+      ]
+    },
+    "REFUND_RETURN": {
+      "count": 5228,
+      "percentage": 3.2,
+      "definition": "Customer requesting refund, return, or inquiring about return process",
+      "keywords": [
+        "refund",
+        "return",
+        "money back",
+        "refunded",
+        "reimbursement",
+        "credit"
+      ],
+      "phrases": [
+        "want refund",
+        "refund status",
+        "return item",
+        "return process",
+        "how return"
+      ],
+      "examples": [
+        "i've dealt with it and got a refund. but how you lot managed to send my item to germany beggars belief!",
+        "i just said it's been sorted! i've been refunded! i'm just not impressed with the service any more.",
+        "i mean my party is in 4 hours, if it\u2019s not here i just need a refund. don\u2019t need a monkey costume any time but tonight l",
+        "amazonuk took money without any they are not giving it back nor giving clear statement of my refund proces",
+        "yes i did,but amazonuk is not doing the refund process.if they do it .i will get the money"
+      ]
+    },
+    "SHIPPING_ADDRESS": {
+      "count": 1583,
+      "percentage": 1.0,
+      "definition": "Customer providing, changing, or reporting issues with shipping address",
+      "keywords": [
+        "address",
+        "shipping",
+        "ship to",
+        "change address",
+        "wrong address",
+        "deliver to"
+      ],
+      "phrases": [
+        "shipping address",
+        "wrong address",
+        "change address",
+        "ship to"
+      ],
+      "examples": [
+        "no idea how to see that. it was 2 day shipping though.",
+        "yeah idk the shipping company and it says \u201cmike ziemer\u201d signed for it in the mail room at our building lol",
+        "want to speak to someone at corp to address these issues.",
+        "sending u my address for oneplus 5t",
+        "installed the alexa app,but it doesn't take my india address alexa weather gives me report of seattle instead of pune."
+      ]
+    },
+    "TECHNICAL_ISSUE": {
+      "count": 5856,
+      "percentage": 3.6,
+      "definition": "Customer reporting technical problems with website, app, or service",
+      "keywords": [
+        "technical",
+        "bug",
+        "error",
+        "broken",
+        "website",
+        "app",
+        "crash",
+        "slow"
+      ],
+      "phrases": [
+        "website issue",
+        "app problem",
+        "technical issue",
+        "website down"
+      ],
+      "examples": [
+        "please spend time &amp; money to fix your app. constant issues with it.",
+        "cs said they would look into logistics problem and call me back on three separate monday\u2019s with an answer/solution. neve",
+        "many times, but still failing, and it happen with some show",
+        "is one of the best app in the world",
+        "thank you. but i don\u2019t expect any change in your policy. i know because i have complained much about this through your a"
+      ]
+    }
+  },
+  "seed": 42
+}

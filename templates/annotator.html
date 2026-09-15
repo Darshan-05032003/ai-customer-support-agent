@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Candidates Annotation Tool</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            background: #e0e0e0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            background: #4CAF50;
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 14px;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        .conversation {
+            margin-bottom: 20px;
+        }
+
+        .conversation h2 {
+            font-size: 14px;
+            color: #999;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .message {
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            line-height: 1.5;
+        }
+
+        .message.customer {
+            background: #e3f2fd;
+            border-left: 3px solid #2196F3;
+        }
+
+        .message.brand {
+            background: #f3e5f5;
+            border-left: 3px solid #9C27B0;
+        }
+
+        .message-meta {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 4px;
+        }
+
+        .message-text {
+            font-size: 14px;
+            word-wrap: break-word;
+        }
+
+        .annotation-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: 13px;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .form-group .info {
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        select, input[type="text"], textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        select:focus, input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: #2196F3;
+            box-shadow: 0 0 0 2px rgba(33,150,243,0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: normal;
+            margin: 0;
+        }
+
+        .radio-group input[type="radio"] {
+            margin: 0;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin: 0;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: #2196F3;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1976D2;
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-primary:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .intent-list {
+            font-size: 12px;
+            color: #666;
+            margin-top: 8px;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .intent-item {
+            padding: 4px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .intent-item:last-child {
+            border-bottom: none;
+        }
+
+        .intent-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .intent-pct {
+            color: #999;
+            float: right;
+        }
+
+        .metadata {
+            background: #f9f9f9;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            margin-bottom: 16px;
+        }
+
+        .metadata-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .metadata-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .status-message {
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+
+        .status-success {
+            background: #c8e6c9;
+            color: #2e7d32;
+        }
+
+        .status-info {
+            background: #bbdefb;
+            color: #1565c0;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #2196F3;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 Golden Candidates Annotation Tool</h1>
+            <p>Annotate 250 customer support conversations with intent, escalation, and ambiguity labels.</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+            <div class="progress-text" id="progressText">Loading...</div>
+        </div>
+
+        <div class="main-layout">
+            <!-- Conversation Panel -->
+            <div class="panel">
+                <div id="conversationPanel">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading conversations...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Annotation Panel -->
+            <div class="panel">
+                <div id="annotationPanel">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        <p>Loading annotation form...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentCandidate = null;
+        let allIntents = {};
+
+        // Initialize
+        async function init() {
+            // Load intents from page context (passed from Flask)
+            const intentsStr = document.body.getAttribute('data-intents');
+            if (intentsStr) {
+                allIntents = JSON.parse(intentsStr);
+            }
+
+            updateProgress();
+            loadNextCandidate();
+        }
+
+        async function updateProgress() {
+            try {
+                const response = await fetch('/api/progress');
+                const progress = await response.json();
+
+                const pct = progress.pct || 0;
+                document.getElementById('progressFill').style.width = pct + '%';
+                document.getElementById('progressText').textContent =
+                    `${progress.annotated} / ${progress.total} annotated (${pct}%) — ${progress.remaining} remaining`;
+            } catch (e) {
+                console.error('Failed to update progress:', e);
+            }
+        }
+
+        async function loadNextCandidate() {
+            try {
+                const response = await fetch('/api/candidate');
+                const data = await response.json();
+
+                if (data.all_annotated) {
+                    showAllAnnotated();
+                    return;
+                }
+
+                currentCandidate = data;
+                renderConversation();
+                renderAnnotationForm();
+            } catch (e) {
+                console.error('Failed to load candidate:', e);
+                document.getElementById('conversationPanel').innerHTML =
+                    '<div class="status-message status-info">Error loading candidate. Please refresh.</div>';
+            }
+        }
+
+        function renderConversation() {
+            const messages = currentCandidate.messages;
+            const metadata = currentCandidate.metadata;
+
+            let html = '';
+
+            // Metadata
+            html += '<div class="metadata">';
+            html += `<div class="metadata-item"><span>Conversation ID:</span> <strong>${currentCandidate.conversation_id}</strong></div>`;
+            html += `<div class="metadata-item"><span>Total Messages:</span> <strong>${metadata.total_messages}</strong></div>`;
+            html += `<div class="metadata-item"><span>Customer Messages:</span> <strong>${metadata.customer_messages}</strong></div>`;
+            html += `<div class="metadata-item"><span>Brand Messages:</span> <strong>${metadata.brand_messages}</strong></div>`;
+            html += '</div>';
+
+            // Messages
+            html += '<div class="conversation">';
+            html += '<h2>Conversation</h2>';
+
+            for (const msg of messages) {
+                const role = msg.role;
+                const className = role === 'customer' ? 'customer' : 'brand';
+                const roleDisplay = role === 'customer' ? '👤 Customer' : '🏢 Brand';
+
+                html += `<div class="message ${className}">`;
+                html += `<div class="message-meta">${roleDisplay}</div>`;
+                html += `<div class="message-text">${escapeHtml(msg.text)}</div>`;
+                html += '</div>';
+            }
+
+            html += '</div>';
+
+            document.getElementById('conversationPanel').innerHTML = html;
+        }
+
+        function renderAnnotationForm() {
+            let html = '<form id="annotationForm" class="annotation-form">';
+
+            if (currentCandidate.existing_annotation) {
+                html += '<div class="status-message status-info">⚠️ This conversation has been annotated before. Updating it.</div>';
+            }
+
+            // Primary Intent
+            html += '<div class="form-group">';
+            html += '<label for="primaryIntent">Primary Intent *</label>';
+            html += '<select id="primaryIntent" required>';
+            html += '<option value="">-- Select an intent --</option>';
+
+            for (const [intent, data] of Object.entries(allIntents)) {
+                html += `<option value="${intent}">${intent}</option>`;
+            }
+
+            html += '</select>';
+            html += '<div class="info">The main problem the customer is reporting or asking about.</div>';
+            html += '</div>';
+
+            // Secondary Intent
+            html += '<div class="form-group">';
+            html += '<label for="secondaryIntent">Secondary Intent (optional)</label>';
+            html += '<select id="secondaryIntent">';
+            html += '<option value="">-- None --</option>';
+
+            for (const [intent, data] of Object.entries(allIntents)) {
+                html += `<option value="${intent}">${intent}</option>`;
+            }
+
+            html += '</select>';
+            html += '<div class="info">If the customer has a secondary concern or issue.</div>';
+            html += '</div>';
+
+            // Escalation Required
+            html += '<div class="form-group">';
+            html += '<label>Escalation Required? *</label>';
+            html += '<div class="radio-group">';
+            html += '<label><input type="radio" name="escalation" value="no" required> No</label>';
+            html += '<label><input type="radio" name="escalation" value="maybe"> Maybe</label>';
+            html += '<label><input type="radio" name="escalation" value="yes"> Yes</label>';
+            html += '</div>';
+            html += '<div class="info">Does this conversation need escalation to a human agent?</div>';
+            html += '</div>';
+
+            // Ambiguous
+            html += '<div class="form-group">';
+            html += '<label>Is this conversation ambiguous or hard to categorize?</label>';
+            html += '<div class="checkbox-group">';
+            html += '<input type="checkbox" id="isAmbiguous">';
+            html += '<label for="isAmbiguous" style="margin: 0;">Flag as ambiguous</label>';
+            html += '</div>';
+            html += '<div class="info">Check if the intent is unclear or the conversation doesn\'t fit well into any category.</div>';
+            html += '</div>';
+
+            // Notes
+            html += '<div class="form-group">';
+            html += '<label for="notes">Annotator Notes (optional)</label>';
+            html += '<textarea id="notes" placeholder="Any observations, edge cases, or reasoning for your labels..."></textarea>';
+            html += '</div>';
+
+            // Buttons
+            html += '<div class="button-group">';
+            html += '<button type="submit" class="btn-primary">Save & Next</button>';
+            html += '<button type="button" class="btn-secondary" onclick="loadNextCandidate()">Skip</button>';
+            html += '</div>';
+
+            html += '</form>';
+
+            document.getElementById('annotationPanel').innerHTML = html;
+
+            // Load existing annotation if present
+            if (currentCandidate.existing_annotation) {
+                const ann = currentCandidate.existing_annotation;
+                if (ann.primary_intent) {
+                    document.getElementById('primaryIntent').value = ann.primary_intent;
+                }
+                if (ann.secondary_intent) {
+                    document.getElementById('secondaryIntent').value = ann.secondary_intent;
+                }
+                if (ann.escalation_required) {
+                    document.querySelector(`input[name="escalation"][value="${ann.escalation_required}"]`).checked = true;
+                }
+                document.getElementById('isAmbiguous').checked = ann.is_ambiguous || false;
+                document.getElementById('notes').value = ann.annotator_notes || '';
+            }
+
+            // Form submission
+            document.getElementById('annotationForm').addEventListener('submit', saveAnnotation);
+        }
+
+        async function saveAnnotation(e) {
+            e.preventDefault();
+
+            const primaryIntent = document.getElementById('primaryIntent').value;
+            if (!primaryIntent) {
+                alert('Please select a primary intent');
+                return;
+            }
+
+            const escalation = document.querySelector('input[name="escalation"]:checked').value;
+            if (!escalation) {
+                alert('Please select an escalation level');
+                return;
+            }
+
+            const data = {
+                conversation_id: currentCandidate.conversation_id,
+                primary_intent: primaryIntent,
+                secondary_intent: document.getElementById('secondaryIntent').value || null,
+                escalation_required: escalation,
+                is_ambiguous: document.getElementById('isAmbiguous').checked,
+                annotator_notes: document.getElementById('notes').value
+            };
+
+            try {
+                const response = await fetch('/api/annotate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    updateProgress();
+                    loadNextCandidate();
+                } else {
+                    alert('Failed to save annotation');
+                }
+            } catch (e) {
+                console.error('Failed to save:', e);
+                alert('Error saving annotation');
+            }
+        }
+
+        function showAllAnnotated() {
+            document.getElementById('annotationPanel').innerHTML =
+                '<div class="status-message status-success"><h2>✓ All Done!</h2><p>All 250 conversations have been annotated. Great work!</p></div>';
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Start
+        init();
+    </script>
+</body>
+</html>
