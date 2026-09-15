@@ -1,0 +1,155 @@
+Hiver SDE Assignment - Data Audit
+======================================================================
+
+Discovered 2 CSV file(s):
+
+  sample.csv                                    0.0 MB
+  twcs/twcs.csv                               492.6 MB
+
+======================================================================
+FILE: sample.csv
+======================================================================
+File size: 0.0 MB
+Rows: 93
+Columns: ['tweet_id', 'author_id', 'inbound', 'created_at', 'text', 'response_tweet_id', 'in_response_to_tweet_id']
+
+--- Data types ---
+tweet_id                     int64
+author_id                      str
+inbound                       bool
+created_at                     str
+text                           str
+response_tweet_id              str
+in_response_to_tweet_id    float64
+dtype: object
+
+--- Missing values ---
+  tweet_id                      :          0 (  0.00%)
+  author_id                     :          0 (  0.00%)
+  inbound                       :          0 (  0.00%)
+  created_at                    :          0 (  0.00%)
+  text                          :          0 (  0.00%)
+  response_tweet_id             :         28 ( 30.11%)
+  in_response_to_tweet_id       :         25 ( 26.88%)
+
+--- Duplicates ---
+  Full row duplicates: 0
+  Duplicate tweet_ids: 0
+
+--- Sample rows (first 2) ---
+   tweet_id     author_id  inbound                      created_at                                                                                                                                           text response_tweet_id  in_response_to_tweet_id
+0    119237        105834     True  Wed Oct 11 06:55:44 +0000 2017                                  @AppleSupport causing the reply to be disregarded and the tapped notification under the keyboard is opened😡😡😡            119236                      NaN
+1    119238  ChaseSupport    False  Wed Oct 11 13:25:49 +0000 2017  @105835 Your business means a lot to us. Please DM your name, zip code and additional details about your concern. ^RR https://t.co/znUu1VJn9r               NaN                 119239.0
+
+======================================================================
+FILE: twcs/twcs.csv
+======================================================================
+File size: 492.6 MB
+Rows: 2,811,774
+Columns: ['tweet_id', 'author_id', 'inbound', 'created_at', 'text', 'response_tweet_id', 'in_response_to_tweet_id']
+
+--- Data types ---
+tweet_id                     int64
+author_id                      str
+inbound                       bool
+created_at                     str
+text                           str
+response_tweet_id              str
+in_response_to_tweet_id    float64
+dtype: object
+
+--- Missing values ---
+  tweet_id                      :          0 (  0.00%)
+  author_id                     :          0 (  0.00%)
+  inbound                       :          0 (  0.00%)
+  created_at                    :          0 (  0.00%)
+  text                          :          0 (  0.00%)
+  response_tweet_id             :  1,040,629 ( 37.01%)
+  in_response_to_tweet_id       :    794,335 ( 28.25%)
+
+--- Duplicates ---
+  Full row duplicates: 0
+  Duplicate tweet_ids: 0
+
+--- Sample rows (first 2) ---
+   tweet_id   author_id  inbound                      created_at                                                                                                                       text response_tweet_id  in_response_to_tweet_id
+0         1  sprintcare    False  Tue Oct 31 22:10:47 +0000 2017  @115712 I understand. I would like to assist you. We would need to get you into a private secured link to further assist.                 2                      3.0
+1         2      115712     True  Tue Oct 31 22:11:45 +0000 2017                                                                              @sprintcare and how do you propose we do that               NaN                      1.0
+
+======================================================================
+MAIN DATASET ANALYSIS
+======================================================================
+
+--- Inbound/Outbound distribution ---
+inbound
+True     1537843
+False    1273931
+Name: count, dtype: int64
+  Inbound (customers):  1,537,843
+  Outbound (brands):    1,273,931
+
+--- Author/Brand analysis ---
+  Total unique authors: 702,777
+  Unique inbound authors (customers): 702,669
+  Unique outbound authors (brands): 108
+
+  Top 20 brands by outbound tweet count:
+    AmazonHelp                      169,840
+    AppleSupport                    106,860
+    Uber_Support                     56,270
+    SpotifyCares                     43,265
+    Delta                            42,253
+    Tesco                            38,573
+    AmericanAir                      36,764
+    TMobileHelp                      34,317
+    comcastcares                     33,031
+    British_Airways                  29,361
+    SouthwestAir                     28,977
+    VirginTrains                     27,817
+    Ask_Spectrum                     25,860
+    XboxSupport                      24,557
+    sprintcare                       22,381
+    hulu_support                     21,872
+    sainsburys                       19,466
+    GWRHelp                          19,364
+    AskPlayStation                   19,098
+    ChipotleTweets                   18,749
+
+  Brand size distribution:
+    Brands with 1000+ tweets: 86
+    Brands with 500+ tweets:  101
+    Brands with 100+ tweets:  108
+    Authors in both inbound and outbound: 0
+
+--- Conversation structure ---
+  Tweets with in_response_to_tweet_id: 2,017,439 (71.7%)
+  Tweets with response_tweet_id: 1,771,145 (63.0%)
+  Tweets with multiple responses: 222,426
+
+--- Conversation linkage ---
+  in_response_to refs found in dataset: 2,013,577 (99.8%)
+  in_response_to refs missing:          3,862 (0.2%)
+  → Conversations can be reconstructed reliably: YES
+  Inbound tweets with >= 1 response: 1,303,829 (84.8%)
+  Outbound (brand) tweets are replies: 1,266,942 (99.5%)
+
+--- Text field ---
+  Min length: 1 chars
+  Max length: 513 chars
+  Mean length: 113.9 chars
+  Median length: 115.0 chars
+  Texts <= 10 chars: 1,838
+
+--- Timestamps ---
+  First recorded: Tue Oct 31 22:10:47 +0000 2017
+  Last recorded: Tue Nov 21 22:01:04 +0000 2017
+
+======================================================================
+BANKING77 DATASET
+======================================================================
+  Status: NOT FOUND (not required for this phase)
+  Note: Banking77 is optional per assignment description
+
+======================================================================
+Audit complete.
+======================================================================

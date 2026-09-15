@@ -1,0 +1,45 @@
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+.~lock*
+Thumbs.db
+
+# Project-specific
+data/processed/
+data/evaluation/
+*.log
+
+# Raw data (use Kaggle download instead)
+archive/twcs/twcs.csv
+archive/sample.csv
